@@ -12,7 +12,7 @@ export function GenuineNote() {
       <div className="page-shell genuine-wrap">
         <Reveal className="genuine-kicker">
           <Heart size={16} fill="currentColor" aria-hidden="true" />
-          sincerity break
+          flirting paused for 10 seconds
         </Reveal>
 
         <motion.article
@@ -24,13 +24,12 @@ export function GenuineNote() {
         >
           <Quote className="genuine-card__quote" size={48} strokeWidth={1.2} aria-hidden="true" />
           <Sparkles className="genuine-card__sparkle" size={24} aria-hidden="true" />
-          <p className="eyebrow">okay… jokes aside.</p>
-          <h2 id="genuine-title">Tiny sincerity break.</h2>
+          <p className="eyebrow">okay, flirting aside for 10 seconds…</p>
+          <h2 id="genuine-title">You’re genuinely really easy to talk to.</h2>
           <p className="genuine-card__body">
-            Talking to you already feels easy. You seem kind, genuine and fun to know. This little site
-            is me showing effort.
+            No forced conversation. No weird energy. Just a girl I barely know somehow making me want to know a lot more.
           </p>
-          <p className="genuine-card__signature">— favourite tech guy application: pending</p>
+          <p className="genuine-card__signature">Okay, 10 seconds are over. Back to flirting. — your favourite tech guy, hopefully</p>
         </motion.article>
       </div>
     </section>
