@@ -36,12 +36,7 @@ export function TouchMeGame() {
       }
 
       const previous = lastPositionRef.current
-      if (
-        previous.left === null ||
-        Math.hypot(next.left - previous.left, next.top - previous.top) > 72
-      ) {
-        break
-      }
+      if (previous.left === null || Math.hypot(next.left - previous.left, next.top - previous.top) > 72) break
     }
 
     const offsetPosition = {
@@ -61,14 +56,10 @@ export function TouchMeGame() {
     setEscapes(nextEscapes)
   }
 
-  const catchButton = () => {
-    setCaught(true)
-  }
+  const catchButton = () => setCaught(true)
 
   const handlePointerEnter = (event) => {
-    if (event.pointerType === 'mouse' && escapesRef.current < MAX_ESCAPES) {
-      escapeButton()
-    }
+    if (event.pointerType === 'mouse' && escapesRef.current < MAX_ESCAPES) escapeButton()
   }
 
   const handleClick = (event) => {
@@ -76,12 +67,10 @@ export function TouchMeGame() {
       catchButton()
       return
     }
-
     if (escapesRef.current < MAX_ESCAPES) {
       escapeButton()
       return
     }
-
     catchButton()
   }
 
@@ -105,35 +94,26 @@ export function TouchMeGame() {
         <div className="game-copy">
           <SectionHeading
             id="game-title"
-            eyebrow="tiny intermission"
-            title="Catch me if you can."
-            copy="Four escapes. Then I behave."
+            eyebrow="tiny dangerous intermission"
+            title="Try to catch me 😏"
+            copy="Four escapes. Then I stop pretending I’m hard to get."
           />
           <div className="game-instructions">
-            <span>
-              <MousePointer2 size={17} aria-hidden="true" />
-              desktop: hover
-            </span>
-            <span>
-              <Hand size={17} aria-hidden="true" />
-              mobile: tap
-            </span>
+            <span><MousePointer2 size={17} aria-hidden="true" />desktop: hover</span>
+            <span><Hand size={17} aria-hidden="true" />mobile: tap</span>
           </div>
           <p className="game-status" aria-live="polite">
             {caught
-              ? 'Caught. Stubbornness confirmed.'
+              ? 'Caught. Persistent too? Noted.'
               : escapes === MAX_ESCAPES
-                ? 'No more escaping — it’s catchable now.'
+                ? 'Fineee. I’ll behave now.'
                 : `${escapes} of ${MAX_ESCAPES} dramatic escapes`}
           </p>
         </div>
 
         <div className={`touch-game ${caught ? 'touch-game--caught' : ''}`}>
           <div className="touch-game__topbar" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <small>very serious game.exe</small>
+            <span /><span /><span /><small>very serious flirting.exe</small>
           </div>
           <div className="touch-game__field" ref={fieldRef}>
             <div className="touch-game__safe-zone" aria-hidden="true" />
@@ -141,11 +121,7 @@ export function TouchMeGame() {
               <motion.div
                 className="touch-game__button-anchor"
                 animate={position}
-                transition={
-                  reduceMotion
-                    ? { duration: 0 }
-                    : { type: 'spring', stiffness: 340, damping: 24, mass: 0.7 }
-                }
+                transition={reduceMotion ? { duration: 0 } : { type: 'spring', stiffness: 340, damping: 24, mass: 0.7 }}
               >
                 <button
                   ref={buttonRef}
@@ -172,11 +148,9 @@ export function TouchMeGame() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <span className="touch-game__reveal-icon">
-                    <Sparkles size={24} aria-hidden="true" />
-                  </span>
-                  <h3>Okay okay, you caught me.</h3>
-                  <p>Stubborn and cute. Dangerous combo.</p>
+                  <span className="touch-game__reveal-icon"><Sparkles size={24} aria-hidden="true" /></span>
+                  <h3>Damn… persistent too?</h3>
+                  <p>Cute, stubborn AND competitive. I’m collecting red flags that somehow look green on you 😂</p>
                   <button className="button button--quiet" type="button" onClick={resetGame}>
                     <RotateCcw size={16} aria-hidden="true" />
                     play again
