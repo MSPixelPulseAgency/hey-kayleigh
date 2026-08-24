@@ -210,7 +210,7 @@ export function HangoutInvite() {
                 >
                   <Send size={17} aria-hidden="true" />
                   {selectedChoice.id === 'bbq'
-                    ? 'Make it official 😏'
+                    ? 'Make it official ☺️'
                     : selectedChoice.id === 'public'
                       ? 'Plan our first meetup'
                       : 'Keep me curious'}
