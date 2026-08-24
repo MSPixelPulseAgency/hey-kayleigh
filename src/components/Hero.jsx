@@ -71,19 +71,19 @@ export function Hero() {
         >
           <p className="eyebrow hero__eyebrow">
             <Sparkles size={15} strokeWidth={2.2} aria-hidden="true" />
-            okay Kayleigh… I made you a tiny website.
+            okay Kayleigh… this might be a little extra.
           </p>
           <h1 id="hero-title">
-            Normal texting felt <em>a little underdressed.</em>
+            But normal texting you felt <em>way too boring.</em>
           </h1>
-          <p className="hero__supporting">So here’s one cute little flex.</p>
+          <p className="hero__supporting">So I made you something instead.</p>
           <div className="hero__actions">
             <a className="button button--primary" href="#the-file">
-              open the case file
+              fine… impress me 👀
               <ArrowDown size={18} strokeWidth={2.2} aria-hidden="true" />
             </a>
             <a className="text-link" href="#invitation">
-              skip to the question
+              skip to the dangerous part
               <ArrowDown size={16} aria-hidden="true" />
             </a>
           </div>
@@ -97,7 +97,7 @@ export function Hero() {
 
         <div className="hero__visual" aria-label="A generic stock-photo moodboard inspired by care, softball, music and college">
           <div className="collage-doodle collage-doodle--loop" aria-hidden="true" />
-          <span className="collage-note collage-note--top">evidence board, but cute</span>
+          <span className="collage-note collage-note--top">apparently I pay attention</span>
           <div className="photo-collage">
             {stockPhotos.map((photo, index) => (
               <PhotoCard key={photo.id} photo={photo} index={index} />
@@ -107,7 +107,7 @@ export function Hero() {
         </div>
       </div>
       <a className="hero__scroll-cue" href="#the-file" aria-label="Continue to The Kayleigh File">
-        <span>keep scrolling</span>
+        <span>keep going</span>
         <ArrowDown size={18} aria-hidden="true" />
       </a>
     </section>
