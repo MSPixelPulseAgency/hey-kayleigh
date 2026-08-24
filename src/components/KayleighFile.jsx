@@ -26,11 +26,11 @@ export function KayleighFile() {
     <section className="story-section file-section" id="the-file" aria-labelledby="file-title">
       <div className="page-shell">
         <div className="section-heading-wrap">
-          <SectionHeading id="file-title" eyebrow="file 01 / officially unofficial" title="The Kayleigh File" />
-          <p className="handwritten-note">Apparently I pay attention.</p>
+          <SectionHeading id="file-title" eyebrow="six little reasons you stayed on my mind" title="The Kayleigh File" />
+          <p className="handwritten-note">Yes, I was listening. You make that easy.</p>
         </div>
 
-        <div className="quick-facts" aria-label="Kayleigh quick facts">
+        <div className="quick-facts" aria-label="Your quick facts">
           <span>20</span>
           <i aria-hidden="true" />
           <span>she / her</span>

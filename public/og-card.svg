@@ -16,10 +16,10 @@
   <g filter="url(#shadow)">
     <rect x="90" y="84" width="1020" height="462" rx="44" fill="#fffdf8" stroke="#ffffff" stroke-width="3"/>
   </g>
-  <text x="150" y="204" fill="#8b5060" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="5">ONE TINY WEBSITE</text>
-  <text x="150" y="330" fill="#4a1726" font-family="Georgia, serif" font-size="78" font-weight="700">A little something</text>
-  <text x="150" y="423" fill="#4a1726" font-family="Georgia, serif" font-size="78" font-style="italic" font-weight="700">for Kayleigh.</text>
-  <text x="150" y="492" fill="#715f65" font-family="Arial, sans-serif" font-size="27">One spontaneous question, wrapped in a ridiculous amount of CSS.</text>
+  <text x="150" y="204" fill="#8b5060" font-family="Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="5">MADE JUST FOR YOU</text>
+  <text x="150" y="330" fill="#4a1726" font-family="Georgia, serif" font-size="70" font-weight="700">Hey Kayleigh,</text>
+  <text x="150" y="423" fill="#4a1726" font-family="Georgia, serif" font-size="70" font-style="italic" font-weight="700">I made you this.</text>
+  <text x="150" y="492" fill="#715f65" font-family="Arial, sans-serif" font-size="22">One real question, a lot of flirting, and an unreasonable amount of CSS.</text>
   <path d="m1042 180 10 24 24 10-24 10-10 24-10-24-24-10 24-10 10-24Z" fill="#6e2135"/>
   <path d="m980 142 5 12 12 5-12 5-5 12-5-12-12-5 12-5 5-12Z" fill="#c56579"/>
 </svg>

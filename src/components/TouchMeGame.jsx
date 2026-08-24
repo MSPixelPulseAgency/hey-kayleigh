@@ -94,26 +94,26 @@ export function TouchMeGame() {
         <div className="game-copy">
           <SectionHeading
             id="game-title"
-            eyebrow="tiny dangerous intermission"
-            title="Try to catch me 😏"
-            copy="Four escapes. Then I stop pretending I’m hard to get."
+            eyebrow="tiny flirting challenge"
+            title="Come catch me, Kayleigh 😏"
+            copy="I’ll run four times. Then I admit you already have my attention."
           />
           <div className="game-instructions">
-            <span><MousePointer2 size={17} aria-hidden="true" />desktop: hover</span>
-            <span><Hand size={17} aria-hidden="true" />mobile: tap</span>
+            <span><MousePointer2 size={17} aria-hidden="true" />hover if you’re brave</span>
+            <span><Hand size={17} aria-hidden="true" />tap if you’re quicker</span>
           </div>
           <p className="game-status" aria-live="polite">
             {caught
-              ? 'Caught. Persistent too? Noted.'
+              ? 'Caught me. I had a feeling you would.'
               : escapes === MAX_ESCAPES
-                ? 'Fineee. I’ll behave now.'
-                : `${escapes} of ${MAX_ESCAPES} dramatic escapes`}
+                ? 'Okay, pretty girl. I’m all yours.'
+                : `${escapes} of ${MAX_ESCAPES} times I pretended to resist`}
           </p>
         </div>
 
         <div className={`touch-game ${caught ? 'touch-game--caught' : ''}`}>
           <div className="touch-game__topbar" aria-hidden="true">
-            <span /><span /><span /><small>very serious flirting.exe</small>
+            <span /><span /><span /><small>mahak_is_flirting.exe</small>
           </div>
           <div className="touch-game__field" ref={fieldRef}>
             <div className="touch-game__safe-zone" aria-hidden="true" />
@@ -127,7 +127,7 @@ export function TouchMeGame() {
                   ref={buttonRef}
                   className="touch-game__button"
                   type="button"
-                  aria-label={`Touch me. ${MAX_ESCAPES - escapes} playful escapes remaining.`}
+                  aria-label={`Touch me. ${MAX_ESCAPES - escapes} playful escapes before you catch me.`}
                   onPointerEnter={handlePointerEnter}
                   onClick={handleClick}
                   onKeyDown={handleKeyDown}
@@ -149,11 +149,11 @@ export function TouchMeGame() {
                   transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <span className="touch-game__reveal-icon"><Sparkles size={24} aria-hidden="true" /></span>
-                  <h3>Damn… persistent too?</h3>
-                  <p>Cute, stubborn AND competitive. I’m collecting red flags that somehow look green on you 😂</p>
+                  <h3>There you are… pretty and persistent.</h3>
+                  <p>You keep getting my attention. At this point, I think you know exactly what you’re doing.</p>
                   <button className="button button--quiet" type="button" onClick={resetGame}>
                     <RotateCcw size={16} aria-hidden="true" />
-                    play again
+                    make me run again
                   </button>
                 </motion.div>
               )}

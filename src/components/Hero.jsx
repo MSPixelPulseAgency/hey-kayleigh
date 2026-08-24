@@ -40,7 +40,7 @@ function PhotoCard({ photo, index }) {
           width="700"
           height="875"
           loading={index === 0 ? 'eager' : 'lazy'}
-          fetchPriority={index === 0 ? 'high' : 'auto'}
+          fetchPriority={index === 0 ? 'high' : 'low'}
           decoding="async"
         />
       </div>
@@ -65,49 +65,49 @@ export function Hero() {
       <div className="hero__inner page-shell">
         <motion.div
           className="hero__copy"
-          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          initial={reduceMotion ? false : { y: 24 }}
+          animate={reduceMotion ? undefined : { y: 0 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="eyebrow hero__eyebrow">
             <Sparkles size={15} strokeWidth={2.2} aria-hidden="true" />
-            okay Kayleigh… this might be a little extra.
+            hey Kayleigh… one normal text was never going to be enough.
           </p>
           <h1 id="hero-title">
-            But normal texting you felt <em>way too boring.</em>
+            You were way too cute for <em>a boring little message.</em>
           </h1>
-          <p className="hero__supporting">So I made you something instead.</p>
+          <p className="hero__supporting">So I turned my little crush into code. Very normal behaviour.</p>
           <div className="hero__actions">
             <a className="button button--primary" href="#the-file">
-              fine… impress me 👀
+              keep going, pretty girl 👀
               <ArrowDown size={18} strokeWidth={2.2} aria-hidden="true" />
             </a>
             <a className="text-link" href="#invitation">
-              skip to the dangerous part
+              skip to my risky little question
               <ArrowDown size={16} aria-hidden="true" />
             </a>
           </div>
           <aside className="privacy-sticker" aria-label="Photo privacy note">
             <CameraOff size={18} aria-hidden="true" />
             <span>
-              <strong>privacy plot twist:</strong> stock models only — never Kayleigh.
+              <strong>tiny disclaimer:</strong> these photos are stock. Every flirty word is for you.
             </span>
           </aside>
         </motion.div>
 
         <div className="hero__visual" aria-label="A generic stock-photo moodboard inspired by care, softball, music and college">
           <div className="collage-doodle collage-doodle--loop" aria-hidden="true" />
-          <span className="collage-note collage-note--top">apparently I pay attention</span>
+          <span className="collage-note collage-note--top">yes, I remembered the details</span>
           <div className="photo-collage">
             {stockPhotos.map((photo, index) => (
               <PhotoCard key={photo.id} photo={photo} index={index} />
             ))}
           </div>
-          <span className="collage-note collage-note--bottom">subtle? absolutely not.</span>
+          <span className="collage-note collage-note--bottom">subtle was never the plan</span>
         </div>
       </div>
-      <a className="hero__scroll-cue" href="#the-file" aria-label="Continue to The Kayleigh File">
-        <span>keep going</span>
+      <a className="hero__scroll-cue" href="#the-file" aria-label="Keep going through what I made for you">
+        <span>there’s more, Kayleigh</span>
         <ArrowDown size={18} aria-hidden="true" />
       </a>
     </section>

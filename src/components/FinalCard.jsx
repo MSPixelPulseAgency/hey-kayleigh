@@ -13,30 +13,30 @@ export function FinalCard() {
           <span className="final-card__spark final-card__spark--two" aria-hidden="true">
             <Heart fill="currentColor" />
           </span>
-          <p className="eyebrow">one tiny website later…</p>
-          <h2 id="final-title">I still don’t know enough about you.</h2>
+          <p className="eyebrow">one last thing, pretty girl…</p>
+          <h2 id="final-title">I made all of this because you caught my attention.</h2>
           <div className="final-card__rule" aria-hidden="true">
             <span />
             <Heart size={17} fill="currentColor" />
             <span />
           </div>
           <p className="final-card__made-with">
-            Which, unfortunately for you, means I’ll have to see you again 😌
+            And I’d really like the chance to keep yours.
           </p>
-          <p className="final-card__for">If you smiled, laughed or blushed anywhere on this page… I win.</p>
+          <p className="final-card__for">If you smiled, laughed, or blushed even once… I’m counting that as a win.</p>
           <p className="final-card__made-with">
             <Code2 size={17} aria-hidden="true" />
-            Made with code,
+            Made by Mahak with code,
             <Coffee size={17} aria-hidden="true" />
-            curiosity & absolutely unnecessary effort.
+            caffeine & a very obvious soft spot for you.
           </p>
-          <p className="final-card__for">for Kayleigh 🤍</p>
+          <p className="final-card__for">only for Kayleigh 🤍</p>
         </Reveal>
 
         <div className="site-footnote">
-          <p>One legal flex. No real photo of Kayleigh appears anywhere.</p>
+          <p>Tiny disclaimer: every photo is stock. Every flirty word is meant for you.</p>
           <details>
-            <summary>Stock visual credits</summary>
+            <summary>See the stock-photo credits</summary>
             <ul>
               {visualCredits.map((photo) => (
                 <li key={photo.id}>

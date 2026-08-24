@@ -13,8 +13,8 @@ import { useScrollProgress } from './hooks/useScrollProgress.js'
 
 function StoryRail() {
   return (
-    <nav className="story-rail" aria-label="Story sections">
-      <span className="story-rail__label">our tiny story</span>
+    <nav className="story-rail" aria-label="The little story I made for you">
+      <span className="story-rail__label">made for you</span>
       <ol>
         {storySections.map((section, index) => (
           <li key={section.id}>
@@ -40,12 +40,12 @@ function FloatingAccents() {
 }
 
 function App() {
-  const progress = useScrollProgress()
+  const progressRef = useScrollProgress()
 
   return (
     <>
       <div className="scroll-progress" aria-hidden="true">
-        <span style={{ transform: `scaleX(${progress})` }} />
+        <span ref={progressRef} />
       </div>
       <AmbientDecorations />
       <FloatingAccents />

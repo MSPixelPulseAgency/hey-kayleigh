@@ -13,13 +13,13 @@ export function Assessment() {
         <div className="assessment-intro">
           <SectionHeading
             id="assessment-title"
-            eyebrow="evidence collected so far"
-            title="Very cute. Very suspicious."
-            copy="You’re making flirting suspiciously easy."
+            eyebrow="my completely unbiased verdict"
+            title="Kayleigh, you’re unfairly cute."
+            copy="And somehow even easier to like."
           />
           <Reveal className="assessment-sticker" delay={0.12}>
             <Sparkles size={17} aria-hidden="true" />
-            <span>respectfully observed</span>
+            <span>respectfully distracted</span>
           </Reveal>
 
           <Reveal className="style-reference" delay={0.18} as="figure">
@@ -31,13 +31,14 @@ export function Assessment() {
                 width="700"
                 height="1050"
                 loading="lazy"
+                fetchPriority="low"
                 decoding="async"
                 alt={styleReferencePhoto.alt}
               />
               <span className="style-reference__badge">stock model · not Kayleigh</span>
             </div>
             <figcaption>
-              <span>piercing-style moodboard</span>
+              <span>piercing-style reference—because yes, I noticed yours</span>
               <a href={styleReferencePhoto.source} target="_blank" rel="noreferrer">
                 {styleReferencePhoto.credit}
               </a>

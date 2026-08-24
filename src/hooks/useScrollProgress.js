@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function useScrollProgress() {
-  const [progress, setProgress] = useState(0)
+  const progressRef = useRef(null)
 
   useEffect(() => {
     let frameId = 0
@@ -9,7 +9,8 @@ export function useScrollProgress() {
     const updateProgress = () => {
       const scrollable = document.documentElement.scrollHeight - window.innerHeight
       const nextProgress = scrollable > 0 ? window.scrollY / scrollable : 0
-      setProgress(Math.min(1, Math.max(0, nextProgress)))
+      const progress = Math.min(1, Math.max(0, nextProgress))
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${progress})`
       frameId = 0
     }
 
@@ -28,5 +29,5 @@ export function useScrollProgress() {
     }
   }, [])
 
-  return progress
+  return progressRef
 }

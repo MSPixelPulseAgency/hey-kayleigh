@@ -25,9 +25,9 @@ const choiceIcons = {
 }
 
 const whatsappMessages = {
-  bbq: 'Okayyy tech guy 😂 BBQ & chill… you convinced me 👀',
-  public: 'Public first 😂 let’s actually meet and see if this vibe survives in person 👀',
-  later: 'Another day 😌 you can stay curious a little longer 😂',
+  bbq: 'Okay Mahak 😂 BBQ with you sounds dangerously cute 👀',
+  public: 'A cute public date sounds good, Mahak ☕',
+  later: 'A little later, Mahak 🤍 Keep the invite open for me.',
 }
 
 const effectPieces = {
@@ -128,9 +128,9 @@ export function HangoutInvite() {
       <div className="page-shell invitation-wrap">
         <SectionHeading
           id="invitation-title"
-          eyebrow="alright trouble… 👀"
-          title="Should we actually test this vibe in person?"
-          copy="Food. Music. Laughing. Maybe a little harmless trouble."
+          eyebrow="okay, gorgeous… here’s my actual question 👀"
+          title="Kayleigh, let me take you out."
+          copy="You bring that smile. I’ll bring the plan."
           align="center"
         />
 
@@ -138,16 +138,16 @@ export function HangoutInvite() {
           <aside className="comfort-note">
             <MapPin size={20} aria-hidden="true" />
             <p>
-              <strong>Your comfort comes first.</strong> We go at whatever pace feels right.
+              <strong>You choose the pace.</strong> I’ll make the rest feel easy.
             </p>
           </aside>
           <p className="choice-promise">
             <MessageCircle size={15} aria-hidden="true" />
-            Pick your vibe, then send it to me on WhatsApp.
+            Pick what feels right. I’ll be genuinely happy with any answer.
           </p>
         </div>
 
-        <div className="choice-group" role="group" aria-label="Choose a hangout response">
+        <div className="choice-group" role="group" aria-label="Choose what feels right for you">
           {inviteChoices.map((choice) => {
             const Icon = choiceIcons[choice.icon]
             const selected = selectedChoiceId === choice.id
@@ -206,14 +206,14 @@ export function HangoutInvite() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Send ${selectedChoice.label} answer on WhatsApp`}
+                  aria-label={`Send ${selectedChoice.label} to me on WhatsApp`}
                 >
                   <Send size={17} aria-hidden="true" />
                   {selectedChoice.id === 'bbq'
-                    ? 'Make it official ☺️'
+                    ? 'Make our BBQ official'
                     : selectedChoice.id === 'public'
-                      ? 'Plan our first meetup'
-                      : 'Keep me curious'}
+                      ? 'Plan our cute date'
+                      : 'Keep my invite open'}
                 </a>
               </motion.article>
             )}

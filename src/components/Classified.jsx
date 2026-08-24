@@ -12,9 +12,9 @@ export function Classified() {
       <div className="page-shell">
         <SectionHeading
           id="classified-title"
-          eyebrow="and this is where it gets interesting…"
-          title="Still classified. For now."
-          copy="Good news: we still have plenty left to be curious about."
+          eyebrow="a few answers I’m saving for later…"
+          title="You still have me very curious."
+          copy="Good. I’d rather discover the best parts with you."
           align="center"
         />
 
@@ -33,7 +33,7 @@ export function Classified() {
                 transition={{ duration: 0.42, delay: index * 0.055 }}
               >
                 <div className="mystery-card__topline">
-                  <span>question {String(index + 1).padStart(2, '0')}</span>
+                  <span>thing I want to know {String(index + 1).padStart(2, '0')}</span>
                   <LockKeyhole size={17} aria-hidden="true" />
                 </div>
                 <h3>{item}</h3>
@@ -43,14 +43,14 @@ export function Classified() {
                 </div>
                 <p>
                   <Search size={14} aria-hidden="true" />
-                  better discovered naturally
+                  save that answer for me
                 </p>
               </motion.article>
             ))}
           </div>
           <div className="classified-board__footer">
             <KeyRound size={18} aria-hidden="true" />
-            <span>unlock method: one dangerously good conversation</span>
+            <span>unlock method: you, me, and a conversation that accidentally runs late</span>
             <Sparkles size={17} aria-hidden="true" />
           </div>
         </div>
