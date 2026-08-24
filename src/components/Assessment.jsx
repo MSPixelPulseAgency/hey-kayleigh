@@ -13,9 +13,9 @@ export function Assessment() {
         <div className="assessment-intro">
           <SectionHeading
             id="assessment-title"
-            eyebrow="early verdict"
+            eyebrow="evidence collected so far"
             title="Very cute. Very suspicious."
-            copy="Based on one suspiciously easy chat."
+            copy="You’re making flirting suspiciously easy."
           />
           <Reveal className="assessment-sticker" delay={0.12}>
             <Sparkles size={17} aria-hidden="true" />
