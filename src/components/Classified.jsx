@@ -12,9 +12,9 @@ export function Classified() {
       <div className="page-shell">
         <SectionHeading
           id="classified-title"
-          eyebrow="file 02 / still classified"
+          eyebrow="and this is where it gets interesting…"
           title="Still classified. For now."
-          copy="Better discovered in person."
+          copy="Good news: we still have plenty left to be curious about."
           align="center"
         />
 
@@ -43,14 +43,14 @@ export function Classified() {
                 </div>
                 <p>
                   <Search size={14} aria-hidden="true" />
-                  awaiting conversation
+                  better discovered naturally
                 </p>
               </motion.article>
             ))}
           </div>
           <div className="classified-board__footer">
             <KeyRound size={18} aria-hidden="true" />
-            <span>unlock method: one good conversation</span>
+            <span>unlock method: one dangerously good conversation</span>
             <Sparkles size={17} aria-hidden="true" />
           </div>
         </div>
