@@ -17,6 +17,7 @@ The document is one linear story with one H1 in the Hero and H2 headings for the
 - Canonical: `https://hey-kayleigh.vercel.app/`
 - Preserve Open Graph, Twitter card, favicon, manifest, robots, and sitemap files.
 - Keep descriptive alt text explicit that people and scenes are generic stock imagery.
+- Keep the piercing-style portrait caption explicit that the adult stock model is not Kayleigh.
 - Avoid structured data that suggests a real organization, person profile, event, relationship, or business.
 
 ## Privacy and demo safety

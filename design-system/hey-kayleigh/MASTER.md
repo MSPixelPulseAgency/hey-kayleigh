@@ -8,25 +8,26 @@ This file is the visual source of truth for the `hey-kayleigh` microsite. The pr
 - Audience context: mobile-first, casual, roughly 1–2 minutes
 - Personality: sweet, funny, confident, genuine, never pressuring
 - Visual language: premium editorial scrapbook with polished romantic details
-- Density: spacious
+- Density: airy but proportionate; never oversized on desktop
 - Variance: asymmetric collage moments within stable readable layouts
 
 ## Palette
 
 | Role | Token | Value |
 | --- | --- | --- |
-| Canvas | `--cream` | `#fff9f0` |
-| Paper | `--paper` | `#fffdf8` |
-| Blush | `--blush` | `#ffd7dc` |
-| Peach | `--peach` | `#ffcab5` |
-| Lavender | `--lavender` | `#ded3ff` |
-| Butter accent | `--butter` | `#ffe8a9` |
-| Muted rose | `--rose` | `#c56579` |
-| Deep rose | `--rose-deep` | `#934157` |
-| Cherry action | `--cherry` | `#6e2135` |
-| Burgundy section | `--burgundy` | `#4a1726` |
-| Primary text | `--charcoal` | `#2b2024` |
-| Secondary text | `--muted` | `#715f65` |
+| Canvas | `--cream` | `#fffaf2` |
+| Paper | `--paper` | `#fffdf9` |
+| Blush | `--blush` | `#f5bfd7` |
+| Peach | `--peach` | `#f3c8ca` |
+| Lavender | `--lavender` | `#c9b8e9` |
+| Pastel blue | `--pastel-blue` | `#bcc9f2` |
+| Soft blue | `--blue-soft` | `#eef2ff` |
+| Muted rose | `--rose` | `#c8799f` |
+| Deep rose | `--rose-deep` | `#8d587b` |
+| Plum action | `--cherry` | `#69426f` |
+| Deep plum section | `--burgundy` | `#4d315f` |
+| Primary text | `--charcoal` | `#342b3a` |
+| Secondary text | `--muted` | `#706476` |
 
 Use deep cherry/charcoal text on cream or white surfaces. Use cream primary text on burgundy surfaces. Never rely on color alone for state.
 
@@ -43,8 +44,8 @@ Use deep cherry/charcoal text on cream or white surfaces. Use cream primary text
 
 - Mobile gutter: 16px
 - Tablet gutter: 24–40px
-- Desktop shell: 1180px maximum
-- Section spacing: 80–160px fluid
+- Desktop shell: 1160px maximum
+- Section spacing: roughly 74–115px fluid
 - Touch spacing: 8px minimum
 - Primary controls: 48px minimum height
 - All controls: 44×44px minimum interactive area
@@ -56,7 +57,7 @@ Use deep cherry/charcoal text on cream or white surfaces. Use cream primary text
 
 - Primary: burgundy pill, cream text, compact shadow
 - Important decision choices never move
-- Selected choices use border, background, icon, and `aria-pressed`
+- Selected choices use border, background, icon, and `aria-pressed`; all choices lock after the one final submission
 - Press feedback may use a tiny scale or elevation change without shifting adjacent content
 - Focus ring: 3px cherry, 4px offset
 
@@ -73,6 +74,15 @@ Use deep cherry/charcoal text on cream or white surfaces. Use cream primary text
 - Never imply a stock subject is Kayleigh
 - Keep local 700px and 1400px WebP variants with `srcset` and declared dimensions
 - Only the first hero image is eager/high-priority; other images are lazy
+- The adult piercing-style reference keeps a persistent `stock model · not Kayleigh` badge at every breakpoint
+
+### Final response delivery
+
+- Show the themed response immediately, separate from email delivery status
+- Persist one immutable submission ID, choice ID, and timestamp before sending
+- Retry only the exact saved payload and provider idempotency key
+- Keep recipients, senders, credentials, and provider errors out of browser code and responses
+- BBQ uses warm rising sparks, public-first uses lavender coffee steam, and another-day uses settling blue-violet stars
 
 ## Motion
 
@@ -81,6 +91,7 @@ Use deep cherry/charcoal text on cream or white surfaces. Use cream primary text
 - Card stagger: 40–70ms per item
 - The game uses transform-based spring motion and stays inside its dedicated field
 - Decorative drift is subtle, slow, and non-interactive
+- Dreamy smoke motion uses transform/opacity only and becomes static under reduced motion
 - No scroll hijacking, autoplay, intrusive popups, or blocking animations
 - All motion must resolve immediately under `prefers-reduced-motion: reduce`
 
@@ -92,7 +103,7 @@ Test at 320, 375, 390, 430, 768, 1024, and 1440px.
 - Collage stays two-column on phones but fits inside the content gutter
 - Content cards become one column on small phones
 - Assessment and game layouts stack below 900px
-- Invitation choices stack below 720px and remain visible together
+- Invitation choices remain three compact columns on tablet and stack below 720px
 - Use `100svh`/fluid content rather than fixed mobile viewport heights
 - Avoid awkward image crops; use declared aspect ratios and `object-fit: cover`
 
@@ -116,13 +127,14 @@ Test at 320, 375, 390, 430, 768, 1024, and 1440px.
 
 ## Pre-delivery checklist
 
-- [ ] Lint and production build pass
+- [ ] Lint, API tests, and production build pass
 - [ ] No horizontal overflow at all required breakpoints
 - [ ] All controls are at least 44px
 - [ ] Focus states and semantic order are intact
 - [ ] Reduced motion is implemented in React and CSS
 - [ ] Images are optimized, attributed, and clearly generic
 - [ ] Four game escapes remain in bounds; the next attempt is catchable
-- [ ] All three invitation responses render correctly and stay selectable
+- [ ] All three invitation responses render uniquely, lock after one choice, and expose a safe retry state
+- [ ] Server rejects arbitrary choices/origins and missing email configuration fails gracefully
 - [ ] No prohibited personal information appears in source or UI
 - [ ] Canonical production assets and metadata load successfully

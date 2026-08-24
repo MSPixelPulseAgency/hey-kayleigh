@@ -25,13 +25,12 @@ export function GenuineNote() {
           <Quote className="genuine-card__quote" size={48} strokeWidth={1.2} aria-hidden="true" />
           <Sparkles className="genuine-card__sparkle" size={24} aria-hidden="true" />
           <p className="eyebrow">okay… jokes aside.</p>
-          <h2 id="genuine-title">This part is just genuine.</h2>
+          <h2 id="genuine-title">Tiny sincerity break.</h2>
           <p className="genuine-card__body">
-            We literally just started talking, but talking to you has felt surprisingly easy. You seem
-            genuine, kind and fun to be around — and apparently building websites is how a tech guy
-            shows effort.
+            Talking to you already feels easy. You seem kind, genuine and fun to know. This little site
+            is me showing effort.
           </p>
-          <p className="genuine-card__signature">— your favourite tech guy (application pending)</p>
+          <p className="genuine-card__signature">— favourite tech guy application: pending</p>
         </motion.article>
       </div>
     </section>

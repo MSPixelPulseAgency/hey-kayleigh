@@ -17,6 +17,8 @@ Protect existing privacy, consent, accessibility, responsive behavior, and inter
 - Test mouse, touch, and keyboard use of the Touch Me game.
 - Confirm the moving button stays entirely within its game field and becomes catchable after four escapes.
 - Confirm all three invitation buttons stay still, visible, selectable, and equally legible.
+- Confirm one click creates one immutable saved response, disables repeat choices, shows the correct themed response, and gives a safe same-payload retry after a delivery error.
+- Confirm the Vercel API rejects arbitrary choices and origins, and never returns email addresses, credentials, provider errors, or other secrets.
 - Test reduced-motion mode and visible focus styles.
 
 ## Content, SEO, and demo safety
@@ -25,7 +27,7 @@ Preserve the exact metadata title/description, canonical URL, one H1, and semant
 
 ## What not to edit
 
-Do not remove the privacy disclosure, stock credits, public-meetup choice, another-day choice, or pressure-free invitation copy. Do not add autoplay media, popups, fake notifications, countdowns, or dark patterns.
+Do not remove the privacy disclosure, persistent stock-model badge, stock credits, public-meetup choice, another-day choice, or pressure-free invitation copy. Do not add autoplay media, popups, fake notifications, countdowns, or dark patterns.
 
 ## Deployment
 

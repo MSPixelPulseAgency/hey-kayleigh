@@ -13,11 +13,15 @@
 
 ## Pre-deployment checks
 
-Run `npm install`, `npm run lint`, `npm run build`, and `git diff --check`. Search for prohibited personal details and unrelated demo references. Verify the full section structure, local responsive WebP images, metadata, and all interactions.
+Run `npm install`, `npm run lint`, `npm test`, `npm run build`, and `git diff --check`. Search for prohibited personal details and unrelated demo references. Verify the full section structure, local responsive WebP images, metadata, and all interactions.
+
+Before a production response test, confirm the project has server-only `RESEND_API_KEY`, `RESPONSE_EMAIL_TO`, `RESPONSE_EMAIL_FROM`, and `SITE_ORIGIN` variables. Never print their values. Missing email configuration must remain a graceful `503`, never a fake success.
+
+Keep the Vercel WAF rule `Protect Kayleigh responses` enabled and published. It rate-limits `POST /api/response` to six requests per IP per 10-minute window; inspect it before changing the API path or submission flow.
 
 ## Production verification
 
-Check the exact canonical alias, home page, JavaScript and CSS assets, `robots.txt`, `sitemap.xml`, favicon, and Open Graph image. Inspect 320, 375, 390, 430, 768, 1024, and 1440px layouts with no horizontal overflow. Test the game and all invitation choices on production.
+Check the exact canonical alias, home page, JavaScript and CSS assets, `robots.txt`, `sitemap.xml`, favicon, and Open Graph image. Inspect 320, 375, 390, 430, 768, 1024, and 1440px layouts with no horizontal overflow. Test the game and all invitation visuals. Use a controlled production submission only when inbox access is available, then confirm exactly one provider event and one received email.
 
 ## Demo safety and what not to edit
 

@@ -85,6 +85,12 @@ export function TouchMeGame() {
     catchButton()
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return
+    event.preventDefault()
+    catchButton()
+  }
+
   const resetGame = () => {
     escapesRef.current = 0
     lastPositionRef.current = { left: null, top: null }
@@ -98,9 +104,10 @@ export function TouchMeGame() {
       <div className="page-shell game-layout">
         <div className="game-copy">
           <SectionHeading
+            id="game-title"
             eyebrow="tiny intermission"
-            title="Think you can catch it?"
-            copy="One harmless button. Four dramatic escapes. Zero important decisions involved."
+            title="Catch me if you can."
+            copy="Four escapes. Then I behave."
           />
           <div className="game-instructions">
             <span>
@@ -147,6 +154,7 @@ export function TouchMeGame() {
                   aria-label={`Touch me. ${MAX_ESCAPES - escapes} playful escapes remaining.`}
                   onPointerEnter={handlePointerEnter}
                   onClick={handleClick}
+                  onKeyDown={handleKeyDown}
                 >
                   Touch me
                   <Heart size={17} fill="currentColor" aria-hidden="true" />
@@ -168,10 +176,10 @@ export function TouchMeGame() {
                     <Sparkles size={24} aria-hidden="true" />
                   </span>
                   <h3>Okay okay, you caught me.</h3>
-                  <p>I’m starting to think you’re as stubborn as you are cute.</p>
+                  <p>Stubborn and cute. Dangerous combo.</p>
                   <button className="button button--quiet" type="button" onClick={resetGame}>
                     <RotateCcw size={16} aria-hidden="true" />
-                    replay the nonsense
+                    play again
                   </button>
                 </motion.div>
               )}

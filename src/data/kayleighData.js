@@ -2,55 +2,55 @@ export const profileCards = [
   {
     icon: 'care',
     title: 'Future PSW',
-    copy: 'Care-forward, kind-hearted, campus-ready.',
+    copy: 'Kind heart. Main-character career.',
     tone: 'peach',
     note: 'good human energy',
   },
   {
     icon: 'softball',
     title: 'Softball girl',
-    copy: 'Competitive streak: quietly noted.',
+    copy: 'Cute. Competitive. Slightly dangerous.',
     tone: 'lavender',
     note: 'probably keeps score',
   },
   {
     icon: 'music',
     title: 'Music person',
-    copy: 'The playlist lore is still pending.',
+    copy: 'The playlist lore is pending.',
     tone: 'blush',
     note: 'aux privileges: TBD',
   },
   {
     icon: 'location',
     title: 'Brampton',
-    copy: 'Representing the 905, naturally.',
+    copy: '905 energy. Naturally.',
     tone: 'cream',
     note: 'local intel acquired',
   },
   {
     icon: 'height',
     title: `5'7" of trouble apparently`,
-    copy: 'A completely unbiased assessment.',
+    copy: 'A very unbiased assessment.',
     tone: 'rose',
     note: 'citation needed',
   },
   {
     icon: 'school',
     title: 'New Humber adventure',
-    copy: 'North Campus chapter: just beginning.',
+    copy: 'North Campus era: loading.',
     tone: 'butter',
     note: 'main-character semester',
   },
 ]
 
 export const assessmentItems = [
-  { label: 'Genuine energy', note: 'first impression: very solid' },
-  { label: 'Easy to talk to', note: 'conversation, minus the awkward loading screen' },
+  { label: 'Genuine energy', note: 'first impression: elite' },
+  { label: 'Easy to talk to', note: 'zero awkward loading screen' },
   { label: 'Respectful', note: 'rare, noticed, appreciated' },
   { label: 'Cute piercings', note: 'a respectfully observed detail' },
   {
-    label: 'Making me suspiciously excited to meet you',
-    note: 'keeping this at a normal level, promise',
+    label: 'Suspiciously excited to meet you',
+    note: 'playing it cool-ish',
   },
 ]
 
@@ -126,28 +126,40 @@ export const stockPhotos = [
   },
 ]
 
+export const styleReferencePhoto = {
+  id: 'piercing-style',
+  src: '/images/piercing-style-700.webp',
+  srcSet: '/images/piercing-style-700.webp 700w, /images/piercing-style-1400.webp 1400w',
+  alt: 'Generic adult stock model with a nose ring and lower-lip piercing, smiling with eyes closed',
+  source: 'https://www.pexels.com/photo/a-young-woman-with-a-nose-ring-and-lip-piercing-6690224/',
+  credit: 'Joshua Abner / Pexels',
+}
+
+export const visualCredits = [...stockPhotos, styleReferencePhoto]
+
 export const inviteChoices = [
   {
     id: 'bbq',
     icon: 'bbq',
-    label: 'BBQ & chill sounds fun',
-    heading: 'Okayyy, now I’m actually excited.',
-    copy: 'Let’s figure out timing together — and we’ll keep it completely chill.',
-    extra:
-      'If we both feel like having a beer/drink or smoking, cool — totally optional, zero pressure.',
+    label: 'BBQ & chill',
+    heading: 'Okayyy. I’m excited.',
+    copy: 'We’ll pick a chill time together.',
+    status: 'The cozy answer has officially landed.',
   },
   {
     id: 'public',
     icon: 'public',
-    label: 'Public first meetup',
-    heading: 'Honestly, perfect.',
-    copy: 'Coffee, food or a little walk first — you pick the vibe.',
+    label: 'Public first',
+    heading: 'Smart and cute.',
+    copy: 'Coffee or a little walk — your pick.',
+    status: 'A very solid first-move choice.',
   },
   {
     id: 'later',
     icon: 'later',
     label: 'Another day',
-    heading: 'Absolutely.',
-    copy: 'No rush at all. I’m still glad you made it to the end of my ridiculous little website.',
+    heading: 'No pressure, ever.',
+    copy: 'Another day works. I’m still glad you clicked.',
+    status: 'The calm answer is safe and sound.',
   },
 ]

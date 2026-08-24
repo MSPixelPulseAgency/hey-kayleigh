@@ -71,39 +71,39 @@ export function Hero() {
         >
           <p className="eyebrow hero__eyebrow">
             <Sparkles size={15} strokeWidth={2.2} aria-hidden="true" />
-            okay Kayleigh… I may have accidentally made you a website.
+            okay Kayleigh… I made you a tiny website.
           </p>
           <h1 id="hero-title">
-            Apparently texting normally <em>wasn’t enough.</em>
+            Normal texting felt <em>a little underdressed.</em>
           </h1>
-          <p className="hero__supporting">So I used my one legal flex instead.</p>
+          <p className="hero__supporting">So here’s one cute little flex.</p>
           <div className="hero__actions">
             <a className="button button--primary" href="#the-file">
-              show me what you made
+              open the case file
               <ArrowDown size={18} strokeWidth={2.2} aria-hidden="true" />
             </a>
             <a className="text-link" href="#invitation">
-              skip to the spontaneous question
+              skip to the question
               <ArrowDown size={16} aria-hidden="true" />
             </a>
           </div>
           <aside className="privacy-sticker" aria-label="Photo privacy note">
             <CameraOff size={18} aria-hidden="true" />
             <span>
-              <strong>privacy plot twist:</strong> stock-photo moodboard only. The real photo mystery survives.
+              <strong>privacy plot twist:</strong> stock models only — never Kayleigh.
             </span>
           </aside>
         </motion.div>
 
         <div className="hero__visual" aria-label="A generic stock-photo moodboard inspired by care, softball, music and college">
           <div className="collage-doodle collage-doodle--loop" aria-hidden="true" />
-          <span className="collage-note collage-note--top">evidence board, but make it cute</span>
+          <span className="collage-note collage-note--top">evidence board, but cute</span>
           <div className="photo-collage">
             {stockPhotos.map((photo, index) => (
               <PhotoCard key={photo.id} photo={photo} index={index} />
             ))}
           </div>
-          <span className="collage-note collage-note--bottom">one tiny digital surprise</span>
+          <span className="collage-note collage-note--bottom">subtle? absolutely not.</span>
         </div>
       </div>
       <a className="hero__scroll-cue" href="#the-file" aria-label="Continue to The Kayleigh File">

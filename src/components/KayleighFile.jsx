@@ -26,7 +26,7 @@ export function KayleighFile() {
     <section className="story-section file-section" id="the-file" aria-labelledby="file-title">
       <div className="page-shell">
         <div className="section-heading-wrap">
-          <SectionHeading eyebrow="file 01 / officially unofficial" title="The Kayleigh File" />
+          <SectionHeading id="file-title" eyebrow="file 01 / officially unofficial" title="The Kayleigh File" />
           <p className="handwritten-note">Things I’ve learned so far…</p>
         </div>
 

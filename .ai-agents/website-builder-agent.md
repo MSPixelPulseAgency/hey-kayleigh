@@ -5,7 +5,7 @@
 - Brand: Hey Kayleigh
 - Format: one-page romantic editorial scrapbook microsite
 - Contact details: none; do not add contact information without explicit approval
-- Stack: React, Vite, Framer Motion, Lucide React, responsive CSS
+- Stack: React, Vite, Framer Motion, Lucide React, responsive CSS, Vercel Functions, Resend
 
 ## Page structure
 
@@ -18,6 +18,7 @@ Preserve this order: Hero, Kayleigh File, Assessment, Classified, Touch Me Game,
 - Preserve 320px through 1440px responsive behavior with no horizontal overflow.
 - Use `clamp()` for fluid type and spacing, local optimized images, and `prefers-reduced-motion` fallbacks.
 - Use Lucide icons for controls; do not substitute emoji for interface icons.
+- Preserve the invitation state machine, immutable saved payload, retry path, and provider idempotency key. Never place email configuration in browser code.
 
 ## Content, SEO, and demo safety
 
@@ -29,8 +30,8 @@ Preserve this order: Hero, Kayleigh File, Assessment, Classified, Touch Me Game,
 
 ## What not to edit
 
-Do not turn the invitation into a form, remove any choice, move important response buttons, autoplay audio, add countdowns, or reuse the game mechanic for consent. Preserve image credits and privacy copy.
+Do not remove any invitation choice, reset a sent choice, move important response buttons, autoplay audio, add countdowns, or reuse the game mechanic for consent. Preserve image credits, the stock-model disclosure, and privacy copy.
 
 ## Deployment
 
-Run `npm run lint` and `npm run build`, inspect every supported breakpoint and interaction, then deploy the repository root to Vercel project `hey-kayleigh` with output directory `dist`.
+Run `npm run lint`, `npm test`, and `npm run build`; inspect every supported breakpoint and interaction; then deploy the repository root to Vercel project `hey-kayleigh` with output directory `dist`. Production email requires server-only `RESEND_API_KEY`, `RESPONSE_EMAIL_TO`, `RESPONSE_EMAIL_FROM`, and `SITE_ORIGIN` variables.

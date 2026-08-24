@@ -1,7 +1,7 @@
 import { Sparkles } from 'lucide-react'
 import { Reveal } from './Reveal.jsx'
 
-export function SectionHeading({ eyebrow, title, copy, align = 'left' }) {
+export function SectionHeading({ eyebrow, title, copy, align = 'left', id }) {
   return (
     <Reveal className={`section-heading section-heading--${align}`}>
       {eyebrow && (
@@ -10,7 +10,7 @@ export function SectionHeading({ eyebrow, title, copy, align = 'left' }) {
           {eyebrow}
         </p>
       )}
-      <h2>{title}</h2>
+      <h2 id={id}>{title}</h2>
       {copy && <p className="section-heading__copy">{copy}</p>}
     </Reveal>
   )

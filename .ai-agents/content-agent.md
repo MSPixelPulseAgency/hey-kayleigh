@@ -16,7 +16,8 @@ Maintain the Hero → Kayleigh File → Assessment → Classified → Game → G
 - Keep language light and respectful. Never sound possessive, intense, jealous, sexual, or pressuring.
 - Do not invent stories, relationship history, preferences, promises, testimonials, or private quotes.
 - Keep the public-meetup and another-day options equally clear and positive.
-- Alcohol or smoking references must remain optional, neutral, and zero-pressure.
+- Keep every line concise and pressure-free; do not add alcohol or smoking copy unless explicitly requested.
+- The stock piercing-style portrait is a generic adult visual reference and must always remain visibly labelled as not Kayleigh.
 
 ## SEO rules
 
@@ -28,4 +29,4 @@ Never publish surname, phone number, workplace, address, family/living informati
 
 ## Deployment
 
-After content edits, search the entire repository for prohibited details, run lint/build, and deploy only to the `hey-kayleigh` Vercel project from the `main` branch.
+After content edits, search the entire repository for prohibited details, run lint/tests/build, and deploy only to the `hey-kayleigh` Vercel project from the `main` branch.

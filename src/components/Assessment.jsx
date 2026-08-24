@@ -1,6 +1,6 @@
 import { Check, Heart, Sparkles } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { assessmentItems } from '../data/kayleighData.js'
+import { assessmentItems, styleReferencePhoto } from '../data/kayleighData.js'
 import { SectionHeading } from './SectionHeading.jsx'
 import { Reveal } from './Reveal.jsx'
 
@@ -12,13 +12,36 @@ export function Assessment() {
       <div className="page-shell assessment-layout">
         <div className="assessment-intro">
           <SectionHeading
-            eyebrow="live analysis"
-            title="Current assessment 👀"
-            copy="A highly scientific review based on a suspiciously easy conversation."
+            id="assessment-title"
+            eyebrow="early verdict"
+            title="Very cute. Very suspicious."
+            copy="Based on one suspiciously easy chat."
           />
           <Reveal className="assessment-sticker" delay={0.12}>
             <Sparkles size={17} aria-hidden="true" />
-            <span>peer review: pending</span>
+            <span>respectfully observed</span>
+          </Reveal>
+
+          <Reveal className="style-reference" delay={0.18} as="figure">
+            <div className="style-reference__image-wrap">
+              <img
+                src={styleReferencePhoto.src}
+                srcSet={styleReferencePhoto.srcSet}
+                sizes="(max-width: 900px) 82vw, 340px"
+                width="700"
+                height="1050"
+                loading="lazy"
+                decoding="async"
+                alt={styleReferencePhoto.alt}
+              />
+              <span className="style-reference__badge">stock model · not Kayleigh</span>
+            </div>
+            <figcaption>
+              <span>piercing-style moodboard</span>
+              <a href={styleReferencePhoto.source} target="_blank" rel="noreferrer">
+                {styleReferencePhoto.credit}
+              </a>
+            </figcaption>
           </Reveal>
         </div>
 
