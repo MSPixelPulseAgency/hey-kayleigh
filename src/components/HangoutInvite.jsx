@@ -5,23 +5,29 @@ import {
   Flame,
   Heart,
   MapPin,
-  RefreshCcw,
+  MessageCircle,
   Send,
   Sparkles,
   Star,
 } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { inviteChoices } from '../data/kayleighData.js'
 import { SectionHeading } from './SectionHeading.jsx'
 
-const STORAGE_KEY = 'hey-kayleigh-choice-v1'
-const MAX_PENDING_AGE_MS = 24 * 60 * 60 * 1000
+const STORAGE_KEY = 'hey-kayleigh-choice-v2'
+const WHATSAPP_NUMBER = '13658830338'
 
 const choiceIcons = {
   bbq: Flame,
   public: Coffee,
   later: CalendarClock,
+}
+
+const whatsappMessages = {
+  bbq: "Hey 😌 I picked BBQ & chill 🔥 I’m down. Let’s figure out a chill time together.",
+  public: "Hey 👀 I picked public first ☕ Coffee or a little walk sounds good. Let’s plan it.",
+  later: "Hey 🤍 I picked another day. I’m still interested, just not tonight. We’ll plan something soon.",
 }
 
 const effectPieces = {
@@ -49,53 +55,14 @@ const effectPieces = {
   ],
 }
 
-function readSavedSubmission() {
+function readSavedChoice() {
   if (typeof window === 'undefined') return null
-
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY))
-    const submittedAt = Date.parse(parsed?.submittedAt)
-    if (
-      !parsed ||
-      !inviteChoices.some((choice) => choice.id === parsed.choiceId) ||
-      typeof parsed.submissionId !== 'string' ||
-      typeof parsed.submittedAt !== 'string' ||
-      !Number.isFinite(submittedAt) ||
-      !['pending', 'sent', 'failed'].includes(parsed.status)
-    ) {
-      return null
-    }
-
-    if (parsed.status !== 'sent' && submittedAt < Date.now() - MAX_PENDING_AGE_MS) {
-      window.localStorage.removeItem(STORAGE_KEY)
-      return null
-    }
-
-    return parsed
+    const saved = window.localStorage.getItem(STORAGE_KEY)
+    return inviteChoices.some((choice) => choice.id === saved) ? saved : null
   } catch {
     return null
   }
-}
-
-function saveSubmission(record) {
-  if (typeof window === 'undefined') return false
-
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(record))
-    return true
-  } catch {
-    return false
-  }
-}
-
-function createSubmissionId() {
-  if (typeof crypto.randomUUID === 'function') return crypto.randomUUID()
-
-  const bytes = crypto.getRandomValues(new Uint8Array(16))
-  bytes[6] = (bytes[6] & 0x0f) | 0x40
-  bytes[8] = (bytes[8] & 0x3f) | 0x80
-  const hex = [...bytes].map((byte) => byte.toString(16).padStart(2, '0'))
-  return `${hex.slice(0, 4).join('')}-${hex.slice(4, 6).join('')}-${hex.slice(6, 8).join('')}-${hex.slice(8, 10).join('')}-${hex.slice(10).join('')}`
 }
 
 function ChoiceAnimation({ choiceId }) {
@@ -123,18 +90,8 @@ function ChoiceAnimation({ choiceId }) {
         <motion.span
           key={`${choiceId}-${x}-${y}`}
           initial={{ opacity: 0, x: 0, y: choiceId === 'later' ? -18 : 24, scale: 0.35, rotate: 0 }}
-          animate={{
-            opacity: [0, 1, 1, 0],
-            x,
-            y,
-            scale: [0.35, 1, 0.78],
-            rotate,
-          }}
-          transition={{
-            duration: choiceId === 'later' ? 1.7 : 1.35,
-            delay: index * 0.075,
-            ease: [0.22, 1, 0.36, 1],
-          }}
+          animate={{ opacity: [0, 1, 1, 0], x, y, scale: [0.35, 1, 0.78], rotate }}
+          transition={{ duration: choiceId === 'later' ? 1.7 : 1.35, delay: index * 0.075, ease: [0.22, 1, 0.36, 1] }}
         >
           <Icon size={18} fill={Icon === Heart ? 'currentColor' : 'none'} />
         </motion.span>
@@ -144,133 +101,25 @@ function ChoiceAnimation({ choiceId }) {
 }
 
 export function HangoutInvite() {
-  const restoredSubmission = useMemo(() => readSavedSubmission(), [])
-  const [submission, setSubmission] = useState(restoredSubmission)
-  const [deliveryState, setDeliveryState] = useState(() => {
-    if (!restoredSubmission) return 'idle'
-    if (restoredSubmission.status === 'sent') return 'sent'
-    return restoredSubmission.status === 'failed' ? 'failed' : 'error'
-  })
-  const [deliveryMessage, setDeliveryMessage] = useState(() => {
-    if (!restoredSubmission) return ''
-    if (restoredSubmission.status === 'sent') return 'Sent safely — one answer, one email.'
-    if (restoredSubmission.status === 'failed') return 'This answer could not be emailed. Please share it directly.'
-    return 'Your answer is saved. Tap retry when you’re ready.'
-  })
-  const requestLockRef = useRef(false)
-  const honeypotRef = useRef(null)
+  const [selectedChoiceId, setSelectedChoiceId] = useState(() => readSavedChoice())
   const reduceMotion = useReducedMotion()
-  const selectedChoice = inviteChoices.find((choice) => choice.id === submission?.choiceId)
-
-  useEffect(() => {
-    const syncSavedChoice = (event) => {
-      if (event.key !== STORAGE_KEY) return
-      const saved = readSavedSubmission()
-      setSubmission(saved)
-      if (!saved) {
-        setDeliveryState('idle')
-        setDeliveryMessage('')
-      } else if (saved.status === 'sent') {
-        setDeliveryState('sent')
-        setDeliveryMessage('Sent safely — one answer, one email.')
-      } else if (saved.status === 'failed') {
-        setDeliveryState('failed')
-        setDeliveryMessage('This answer could not be emailed. Please share it directly.')
-      } else {
-        setDeliveryState('error')
-        setDeliveryMessage('Your answer is saved. Tap retry when you’re ready.')
-      }
-    }
-
-    window.addEventListener('storage', syncSavedChoice)
-    return () => window.removeEventListener('storage', syncSavedChoice)
-  }, [])
-
-  const deliverResponse = async (record) => {
-    if (requestLockRef.current) return
-    requestLockRef.current = true
-    const pendingRecord = { ...record, status: 'pending' }
-    setSubmission(pendingRecord)
-    setDeliveryState('sending')
-    setDeliveryMessage('Sending your answer safely…')
-    const pendingWasSaved = saveSubmission(pendingRecord)
-
-    const controller = new AbortController()
-    const timeoutId = window.setTimeout(() => controller.abort(), 12000)
-
-    try {
-      const response = await fetch('/api/response', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          submissionId: record.submissionId,
-          choiceId: record.choiceId,
-          submittedAt: record.submittedAt,
-          website: record.website || '',
-        }),
-        keepalive: true,
-        signal: controller.signal,
-      })
-      const payload = await response.json().catch(() => ({}))
-
-      if (!response.ok || payload.ok !== true) {
-        const deliveryError = new Error('delivery_failed')
-        deliveryError.retryable =
-          payload.retryable === true ||
-          response.status === 429 ||
-          (response.status >= 500 && payload.retryable !== false)
-        deliveryError.publicMessage = typeof payload.message === 'string' ? payload.message : ''
-        throw deliveryError
-      }
-
-      const sentRecord = { ...record, status: 'sent' }
-      const sentWasSaved = saveSubmission(sentRecord)
-      setSubmission(sentRecord)
-      setDeliveryState('sent')
-      setDeliveryMessage(
-        sentWasSaved
-          ? 'Sent safely — one answer, one email.'
-          : 'Sent safely. Keep this tab open so your choice stays visible.',
-      )
-    } catch (error) {
-      const retryable = error?.retryable !== false
-      const savedRecord = { ...record, status: retryable ? 'pending' : 'failed' }
-      const failureWasSaved = saveSubmission(savedRecord)
-      setSubmission(savedRecord)
-      setDeliveryState(retryable ? 'error' : 'failed')
-      if (!retryable) {
-        setDeliveryMessage(error.publicMessage || 'This answer could not be emailed. Please share it directly.')
-      } else if (pendingWasSaved || failureWasSaved) {
-        setDeliveryMessage('Tiny internet hiccup. Your answer is saved — retry is safe.')
-      } else {
-        setDeliveryMessage('Tiny internet hiccup. Keep this tab open, then retry safely.')
-      }
-    } finally {
-      window.clearTimeout(timeoutId)
-      requestLockRef.current = false
-    }
-  }
+  const selectedChoice = useMemo(
+    () => inviteChoices.find((choice) => choice.id === selectedChoiceId) || null,
+    [selectedChoiceId],
+  )
 
   const chooseResponse = (choiceId) => {
-    if (requestLockRef.current || submission) return
-
-    const record = {
-      submissionId: createSubmissionId(),
-      choiceId,
-      submittedAt: new Date().toISOString(),
-      website: honeypotRef.current?.value || '',
-      status: 'pending',
+    setSelectedChoiceId(choiceId)
+    try {
+      window.localStorage.setItem(STORAGE_KEY, choiceId)
+    } catch {
+      // The UI still works even if storage is unavailable.
     }
-
-    deliverResponse(record)
   }
 
-  const retryDelivery = () => {
-    if (!submission || deliveryState !== 'error') return
-    deliverResponse(submission)
-  }
-
-  const choiceLocked = Boolean(submission) || deliveryState === 'sending'
+  const whatsappUrl = selectedChoice
+    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessages[selectedChoice.id])}`
+    : '#'
 
   return (
     <section className="story-section invitation-section" id="invitation" aria-labelledby="invitation-title">
@@ -293,40 +142,24 @@ export function HangoutInvite() {
             </p>
           </aside>
           <p className="choice-promise">
-            <Send size={15} aria-hidden="true" />
-            One tap sends your answer privately.
+            <MessageCircle size={15} aria-hidden="true" />
+            Pick one, then send your answer on WhatsApp.
           </p>
         </div>
 
-        <input
-          className="form-honeypot"
-          ref={honeypotRef}
-          name="website"
-          type="text"
-          tabIndex="-1"
-          autoComplete="off"
-          aria-hidden="true"
-        />
-
-        <div
-          className="choice-group"
-          role="group"
-          aria-label="Choose and securely send a hangout response"
-          aria-busy={deliveryState === 'sending'}
-        >
+        <div className="choice-group" role="group" aria-label="Choose a hangout response">
           {inviteChoices.map((choice) => {
             const Icon = choiceIcons[choice.icon]
-            const selected = submission?.choiceId === choice.id
+            const selected = selectedChoiceId === choice.id
             return (
               <motion.button
                 key={choice.id}
                 className={`choice-button choice-button--${choice.id} ${selected ? 'choice-button--selected' : ''}`}
                 type="button"
                 aria-pressed={selected}
-                disabled={choiceLocked}
                 onClick={() => chooseResponse(choice.id)}
-                whileHover={reduceMotion || choiceLocked ? undefined : { y: -5 }}
-                whileTap={reduceMotion || choiceLocked ? undefined : { scale: 0.985 }}
+                whileHover={reduceMotion ? undefined : { y: -5 }}
+                whileTap={reduceMotion ? undefined : { scale: 0.985 }}
                 transition={{ duration: 0.2 }}
               >
                 <span className="choice-button__icon">
@@ -343,11 +176,10 @@ export function HangoutInvite() {
 
         <div className="choice-response" aria-live="polite">
           <AnimatePresence mode="wait">
-            {selectedChoice ? (
+            {selectedChoice && (
               <motion.article
                 key={selectedChoice.id}
                 className={`response-card response-card--${selectedChoice.id}`}
-                aria-busy={deliveryState === 'sending'}
                 initial={reduceMotion ? false : { opacity: 0, y: 18, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={reduceMotion ? undefined : { opacity: 0, y: -10, scale: 0.98 }}
@@ -365,27 +197,21 @@ export function HangoutInvite() {
                 </span>
                 <h3>{selectedChoice.heading}</h3>
                 <p>{selectedChoice.copy}</p>
-                <p
-                  className={`delivery-status delivery-status--${deliveryState}`}
-                  role={deliveryState === 'error' || deliveryState === 'failed' ? 'alert' : 'status'}
+                <a
+                  className="button button--retry"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Send ${selectedChoice.label} answer on WhatsApp`}
                 >
-                  {deliveryState === 'sending' && <span className="delivery-status__spinner" aria-hidden="true" />}
-                  {deliveryState === 'sent' && <Check size={16} strokeWidth={3} aria-hidden="true" />}
-                  {deliveryState === 'error' && <Sparkles size={16} aria-hidden="true" />}
-                  {deliveryState === 'failed' && <Sparkles size={16} aria-hidden="true" />}
-                  <span>{deliveryMessage}</span>
+                  <Send size={17} aria-hidden="true" />
+                  Send my answer on WhatsApp
+                </a>
+                <p className="delivery-status delivery-status--sent" role="status">
+                  <MessageCircle size={16} aria-hidden="true" />
+                  <span>Your choice is ready as a pre-written WhatsApp message.</span>
                 </p>
-                {deliveryState === 'error' && (
-                  <button className="button button--retry" type="button" onClick={retryDelivery}>
-                    <RefreshCcw size={16} aria-hidden="true" />
-                    retry safely
-                  </button>
-                )}
               </motion.article>
-            ) : (
-              <motion.p className="choice-placeholder" key="placeholder" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                Pick the answer that feels right. Every answer is good.
-              </motion.p>
             )}
           </AnimatePresence>
         </div>
