@@ -25,9 +25,9 @@ const choiceIcons = {
 }
 
 const whatsappMessages = {
-  bbq: "Hey 😌 I picked BBQ & chill 🔥 I’m down. Let’s figure out a chill time together.",
-  public: "Hey 👀 I picked public first ☕ Coffee or a little walk sounds good. Let’s plan it.",
-  later: "Hey 🤍 I picked another day. I’m still interested, just not tonight. We’ll plan something soon.",
+  bbq: 'Okayyy tech guy 😂 BBQ & chill… you convinced me 👀',
+  public: 'Public first 😂 let’s actually meet and see if this vibe survives in person 👀',
+  later: 'Another day 😌 you can stay curious a little longer 😂',
 }
 
 const effectPieces = {
@@ -128,9 +128,9 @@ export function HangoutInvite() {
       <div className="page-shell invitation-wrap">
         <SectionHeading
           id="invitation-title"
-          eyebrow="the actual question 👀"
-          title="Want to hang out?"
-          copy="BBQ, music, talking — see if the vibe survives real life."
+          eyebrow="alright trouble… 👀"
+          title="Should we actually test this vibe in person?"
+          copy="Food. Music. Laughing. Maybe a little harmless trouble."
           align="center"
         />
 
@@ -138,12 +138,12 @@ export function HangoutInvite() {
           <aside className="comfort-note">
             <MapPin size={20} aria-hidden="true" />
             <p>
-              <strong>No pressure.</strong> Public first or another day is equally cute. Pick what feels right.
+              <strong>Your comfort comes first.</strong> We go at whatever pace feels right.
             </p>
           </aside>
           <p className="choice-promise">
             <MessageCircle size={15} aria-hidden="true" />
-            Pick one, then send your answer on WhatsApp.
+            Pick your vibe, then send it to me on WhatsApp.
           </p>
         </div>
 
@@ -197,6 +197,10 @@ export function HangoutInvite() {
                 </span>
                 <h3>{selectedChoice.heading}</h3>
                 <p>{selectedChoice.copy}</p>
+                <p className="delivery-status delivery-status--sent" role="status">
+                  <Sparkles size={16} aria-hidden="true" />
+                  <span>{selectedChoice.status}</span>
+                </p>
                 <a
                   className="button button--retry"
                   href={whatsappUrl}
@@ -205,12 +209,12 @@ export function HangoutInvite() {
                   aria-label={`Send ${selectedChoice.label} answer on WhatsApp`}
                 >
                   <Send size={17} aria-hidden="true" />
-                  Send my answer on WhatsApp
+                  {selectedChoice.id === 'bbq'
+                    ? 'Make it official 😏'
+                    : selectedChoice.id === 'public'
+                      ? 'Plan our first meetup'
+                      : 'Keep me curious'}
                 </a>
-                <p className="delivery-status delivery-status--sent" role="status">
-                  <MessageCircle size={16} aria-hidden="true" />
-                  <span>Your choice is ready as a pre-written WhatsApp message.</span>
-                </p>
               </motion.article>
             )}
           </AnimatePresence>
