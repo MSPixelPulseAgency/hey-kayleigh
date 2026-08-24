@@ -1,0 +1,17 @@
+{
+  "name": "A little something for Kayleigh",
+  "short_name": "Hey Kayleigh",
+  "description": "One tiny website. One spontaneous question.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff9f0",
+  "theme_color": "#6e2135",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

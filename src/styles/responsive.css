@@ -1,0 +1,452 @@
+@supports (overflow: clip) {
+  body {
+    overflow-x: clip;
+  }
+}
+
+@media (max-width: 1280px) {
+  .story-rail {
+    display: none;
+  }
+}
+
+@media (max-width: 1040px) {
+  :root {
+    --page-gutter: clamp(1.25rem, 4vw, 2.75rem);
+  }
+
+  .hero__inner {
+    gap: 3rem;
+  }
+
+  .photo-collage {
+    height: clamp(480px, 51vw, 570px);
+  }
+
+  .file-card {
+    grid-column: span 6;
+  }
+
+  .file-card:nth-child(2),
+  .file-card:nth-child(5) {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__inner,
+  .assessment-layout,
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__copy {
+    max-width: 720px;
+  }
+
+  .hero__visual {
+    width: min(100%, 690px);
+    margin-inline: auto;
+  }
+
+  .photo-collage {
+    height: min(82vw, 630px);
+  }
+
+  .assessment-layout,
+  .game-layout {
+    gap: 2.75rem;
+  }
+
+  .assessment-intro {
+    max-width: 650px;
+  }
+
+  .classified-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mystery-card--wide {
+    grid-column: 1 / span 2;
+  }
+
+  .choice-group {
+    gap: 0.7rem;
+  }
+
+  .choice-button {
+    grid-template-columns: 1fr;
+    align-content: center;
+    justify-items: center;
+    padding-inline: 0.8rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --section-space: clamp(5rem, 17vw, 7rem);
+  }
+
+  .hero {
+    padding-top: 5.75rem;
+  }
+
+  .hero__inner {
+    gap: 3.2rem;
+  }
+
+  .hero__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero__actions .button {
+    width: 100%;
+  }
+
+  .hero__actions .text-link {
+    justify-content: center;
+  }
+
+  .hero__scroll-cue {
+    display: none;
+  }
+
+  .section-heading-wrap {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .quick-facts {
+    border-radius: 1rem;
+  }
+
+  .file-card {
+    min-height: 225px;
+  }
+
+  .choice-group {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-button {
+    min-height: 76px;
+    grid-template-columns: auto 1fr;
+    justify-items: initial;
+    text-align: left;
+  }
+
+  .choice-response {
+    min-height: 290px;
+  }
+
+  .site-footnote {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .site-footnote details {
+    width: 100%;
+  }
+
+  .site-footnote summary {
+    text-align: left;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --page-gutter: 1rem;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.1em;
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 15.4vw, 4.2rem);
+  }
+
+  .privacy-sticker {
+    width: 100%;
+  }
+
+  .photo-collage {
+    height: min(126vw, 550px);
+  }
+
+  .photo-card {
+    width: 46%;
+    padding: 0.45rem 0.45rem 0.62rem;
+    border-radius: 0.82rem;
+  }
+
+  .photo-card--care {
+    top: 7%;
+    left: 0.5%;
+  }
+
+  .photo-card--softball {
+    right: 0.5%;
+    width: 47%;
+  }
+
+  .photo-card--music {
+    bottom: 2%;
+    left: 1%;
+    width: 44%;
+  }
+
+  .photo-card--campus {
+    right: 1%;
+    bottom: 5%;
+    width: 47%;
+  }
+
+  .photo-card::after {
+    top: -0.5rem;
+    width: 3rem;
+    height: 0.9rem;
+  }
+
+  .photo-card__image-wrap {
+    border-radius: 0.52rem;
+  }
+
+  .photo-card figcaption {
+    padding-top: 0.5rem;
+  }
+
+  .photo-card figcaption span {
+    font-size: 0.58rem;
+    letter-spacing: 0.02em;
+  }
+
+  .photo-card figcaption span svg {
+    display: none;
+  }
+
+  .photo-card figcaption small {
+    display: none;
+  }
+
+  .collage-note {
+    font-size: 0.95rem;
+  }
+
+  .collage-note--top {
+    top: 3%;
+    left: 18%;
+  }
+
+  .collage-note--bottom {
+    right: 8%;
+  }
+
+  .quick-facts {
+    width: 100%;
+    justify-content: center;
+    padding-inline: 0.8rem;
+    font-size: 0.67rem;
+  }
+
+  .file-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .file-card {
+    min-height: 215px;
+    grid-column: auto;
+  }
+
+  .assessment-card,
+  .assessment-card:nth-child(even) {
+    min-height: 88px;
+    gap: 0.8rem;
+    padding: 0.85rem;
+    margin-left: 0;
+  }
+
+  .assessment-card__check {
+    width: 40px;
+    height: 40px;
+  }
+
+  .assessment-card__heart {
+    display: none;
+  }
+
+  .classified-board {
+    padding: 0.8rem;
+    border-radius: 1.4rem;
+  }
+
+  .classified-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mystery-card--wide {
+    grid-column: auto;
+  }
+
+  .mystery-card h3 {
+    min-height: 0;
+  }
+
+  .classified-board__footer {
+    align-items: flex-start;
+  }
+
+  .classified-board__footer svg:last-child {
+    display: none;
+  }
+
+  .game-instructions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .game-instructions span {
+    width: 100%;
+  }
+
+  .touch-game {
+    padding: 0.5rem;
+    border-radius: 1.25rem;
+  }
+
+  .touch-game__field {
+    height: 260px;
+  }
+
+  .touch-game__topbar small {
+    font-size: 0.56rem;
+  }
+
+  .touch-game__reveal {
+    inset: 0.6rem;
+    padding: 0.6rem;
+  }
+
+  .touch-game__reveal-icon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 0.7rem;
+  }
+
+  .touch-game__reveal p {
+    margin-bottom: 0.85rem;
+  }
+
+  .genuine-card {
+    padding: 2.8rem 1.3rem;
+  }
+
+  .genuine-card::before {
+    inset: 0.65rem;
+  }
+
+  .genuine-card__sparkle {
+    top: 7%;
+    right: 8%;
+  }
+
+  .invitation-section {
+    padding-block: 6rem;
+  }
+
+  .comfort-note {
+    padding: 0.9rem;
+  }
+
+  .response-card {
+    padding: 1.3rem 1rem;
+  }
+
+  .response-card__extra {
+    text-align: left;
+  }
+
+  .final-card {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .final-card::before {
+    inset: 0.65rem;
+  }
+
+  .final-card__spark--one {
+    top: 9%;
+    right: 10%;
+  }
+
+  .final-card__spark--two {
+    bottom: 9%;
+    left: 8%;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: 2.92rem;
+  }
+
+  .hero__supporting {
+    font-size: 1.55rem;
+  }
+
+  .collage-note--bottom {
+    display: none;
+  }
+
+  .quick-facts i {
+    display: none;
+  }
+
+  .quick-facts {
+    gap: 0.45rem 0.7rem;
+  }
+
+  .touch-game__button {
+    min-width: 118px;
+    padding-inline: 0.8rem;
+    font-size: 0.88rem;
+  }
+
+  .choice-button {
+    padding-right: 2.2rem;
+  }
+}
+
+@media (hover: none) {
+  .photo-card:hover .photo-card__image {
+    transform: none;
+  }
+
+  .button:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-cue svg,
+  .ambient,
+  .floating-accents > * {
+    animation: none;
+  }
+
+  .photo-card,
+  .file-card,
+  .assessment-card,
+  .mystery-card {
+    transform: none !important;
+  }
+}

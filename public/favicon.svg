@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Hey Kayleigh heart favicon</title>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="5" x2="57" y2="61" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd7dc"/>
+      <stop offset="1" stop-color="#ded3ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <path d="M32 49S14 39.4 14 25.5C14 19.7 18.5 16 23.6 16c3.6 0 6.7 2 8.4 5 1.7-3 4.8-5 8.4-5 5.1 0 9.6 3.7 9.6 9.5C50 39.4 32 49 32 49Z" fill="#6e2135"/>
+  <path d="m46 10 1.8 4.2L52 16l-4.2 1.8L46 22l-1.8-4.2L40 16l4.2-1.8L46 10Z" fill="#fff9f0"/>
+</svg>
